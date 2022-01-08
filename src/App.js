@@ -1,14 +1,7 @@
-import HeaderContents from "./components/organisms/HeaderContents";
-import logo from "./images/pills.png";
+import BaseLayout from "./components/templates/BaseLayout";
 
 function App() {
-  return (
-    <div className="App">
-      <HeaderContents logo={logo} />
-      <main className="main-contents">main</main>
-      <footer className="footer-contents">footer</footer>
-    </div>
-  );
+  return <BaseLayout isAuthenticated={true} />;
 }
 
 export default App;
