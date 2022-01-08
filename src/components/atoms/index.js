@@ -28,18 +28,20 @@ export function NavbarItem() {
   return (
     <div className="navbar-start">
       <Link className="navbar-item" to="/">
-        Home
+        ダッシュボード
       </Link>
 
       <div className="navbar-item has-dropdown is-hoverable">
-        <span className="navbar-link">Menu</span>
+        <span className="navbar-link">
+          メニュー
+        </span>
 
         <div className="navbar-dropdown">
           <Link
             className="navbar-item"
-            to="/users/create"
+            to="/users"
           >
-            Create User
+            ユーザー一覧
           </Link>
         </div>
       </div>
