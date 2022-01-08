@@ -1,4 +1,7 @@
-import { Logo, HambergerButton } from '../../atoms'
+import {
+    Logo,
+    HambergerButton,
+} from '../../atoms'
 import React from 'react'
 
 class NavbarBrand extends React.Component {
@@ -6,7 +9,12 @@ class NavbarBrand extends React.Component {
         return (
             <div className="navbar-brand">
                 <Logo logo={this.props.logo} />
-                <HambergerButton target={this.props.hambergerButtonTarget} />
+                <HambergerButton
+                    target={
+                        this.props
+                            .hambergerButtonTarget
+                    }
+                />
             </div>
         )
     }

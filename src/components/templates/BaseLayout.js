@@ -6,8 +6,14 @@ class BaseLayout extends React.Component {
     render() {
         return (
             <>
-                <HeaderContents isAuthenticated={this.props.isAuthenticated} />
-                <main className="main-contents">main</main>
+                <HeaderContents
+                    isAuthenticated={
+                        this.props.isAuthenticated
+                    }
+                />
+                <main className="main-contents">
+                    main
+                </main>
                 <FooterContents />
             </>
         )
