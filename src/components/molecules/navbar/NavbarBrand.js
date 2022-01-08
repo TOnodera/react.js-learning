@@ -5,7 +5,7 @@ class NavbarBrand extends React.Component {
   render() {
     return (
       <div className="navbar-brand">
-        <Logo logo={this.props.logo} href="/" />
+        <Logo logo={this.props.logo} />
         <HambergerButton target={this.props.hambergerButtonTarget} />
       </div>
     );

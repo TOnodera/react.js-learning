@@ -1,7 +1,8 @@
-export function Logo(props) {
+import logo from "../../images/logo.svg";
+export function Logo() {
   return (
-    <a className="navbar-item" href={props.href}>
-      <img src={props.logo} width="100" />
+    <a className="navbar-item" href="/">
+      <img src={logo} width="100" />
     </a>
   );
 }
