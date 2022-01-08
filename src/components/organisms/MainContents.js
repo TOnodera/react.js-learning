@@ -1,6 +1,8 @@
 import React from 'react'
 import Breadcumb from './Breadcrumb'
-import BasicCard from './card/BasicCard'
+import Dashboard from '../pages/Dashboard'
+import CreateUser from '../pages/user/Create'
+import { Route, Switch } from 'react-router-dom'
 
 class MainContents extends React.Component {
   render() {
@@ -8,7 +10,18 @@ class MainContents extends React.Component {
       <main className="main-contents columns is-centered">
         <div className="column is-four-fifths mt-5">
           <Breadcumb />
-          <BasicCard />
+          <Switch>
+            <Route
+              exact
+              path="/"
+              component={Dashboard}
+            />
+            <Route
+              exact
+              path="/users/create"
+              component={CreateUser}
+            />
+          </Switch>
         </div>
       </main>
     )

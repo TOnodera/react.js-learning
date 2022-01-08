@@ -1,4 +1,5 @@
 import logo from '../../images/logo.svg'
+import { Link } from 'react-router-dom'
 export function Logo() {
   return (
     <a className="navbar-item" href="/">
@@ -26,21 +27,20 @@ export function HambergerButton(props) {
 export function NavbarItem() {
   return (
     <div className="navbar-start">
-      <a className="navbar-item">Home</a>
-
-      <a className="navbar-item">Documentation</a>
+      <Link className="navbar-item" to="/">
+        Home
+      </Link>
 
       <div className="navbar-item has-dropdown is-hoverable">
-        <a className="navbar-link">More</a>
+        <span className="navbar-link">Menu</span>
 
         <div className="navbar-dropdown">
-          <a className="navbar-item">About</a>
-          <a className="navbar-item">Jobs</a>
-          <a className="navbar-item">Contact</a>
-          <hr className="navbar-divider" />
-          <a className="navbar-item">
-            Report an issue
-          </a>
+          <Link
+            className="navbar-item"
+            to="/users/create"
+          >
+            Create User
+          </Link>
         </div>
       </div>
     </div>
