@@ -1,6 +1,7 @@
 import React from 'react'
 import Breadcumb from './Breadcrumb'
 import BasicCard from './card/BasicCard'
+
 class MainContents extends React.Component {
   render() {
     return (

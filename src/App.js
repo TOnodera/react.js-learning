@@ -1,7 +1,17 @@
 import BaseLayout from './components/templates/BaseLayout'
+import React from 'react'
 
-function App() {
-  return <BaseLayout isAuthenticated={true} />
+//dummy
+const isAuthenticated = true
+
+class App extends React.Component {
+  render() {
+    return (
+      <BaseLayout
+        isAuthenticated={isAuthenticated}
+      />
+    )
+  }
 }
 
 export default App
