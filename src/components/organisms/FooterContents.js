@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react'
 
 class FooterContents extends React.Component {
-  render() {
-    return <footer className="footer-contents">footer</footer>;
-  }
+    render() {
+        return <footer className="footer-contents">footer</footer>
+    }
 }
 
-export default FooterContents;
+export default FooterContents
