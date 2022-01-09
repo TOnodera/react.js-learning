@@ -9,7 +9,10 @@ class Navbar extends React.Component {
     return (
       <div
         id={this.props.id}
-        className="navbar-menu"
+        className={[
+          'navbar-menu',
+          this.props.isActive ? 'is-active' : '',
+        ].join(' ')}
       >
         <NavbarItem />
         <NavbarLoginButtons />

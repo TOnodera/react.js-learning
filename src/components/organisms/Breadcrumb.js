@@ -1,5 +1,8 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
+import {
+  useLocation,
+  Link,
+} from 'react-router-dom'
 
 const parsePath = (pathname) => {
   if (pathname == '/') {
@@ -21,13 +24,13 @@ const Breadcrumb = () => {
     >
       <ul>
         <li>
-          <a href="/">top</a>
+          <Link to="/">top</Link>
         </li>
         {paths.map((path) => (
           <li key={path}>
-            <a href={(memo += '/' + path)}>
+            <Link to={(memo += '/' + path)}>
               {path}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

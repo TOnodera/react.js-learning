@@ -11,11 +11,14 @@ export function Logo() {
 export function HambergerButton(props) {
   return (
     <a
+      onClick={props.onClick}
       role="button"
-      className="navbar-burger"
+      className={[
+        'navbar-burger',
+        props.isActive ? 'is-active' : '',
+      ].join(' ')}
       aria-label="menu"
       aria-expanded="false"
-      data-target={props.target}
     >
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>

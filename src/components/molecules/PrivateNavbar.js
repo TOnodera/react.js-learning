@@ -1,8 +1,21 @@
 import React from 'react'
-import NavbarBrand from './navbar/NavbarBrand'
+import { Logo, HambergerButton } from '../atoms'
 import Navbar from './navbar/Navbar'
 
 class PrivateNavbar extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      isActive: false,
+    }
+  }
+  toggleMenu = () =>
+    this.setState((state) => {
+      return {
+        isActive: !state.isActive,
+      }
+    })
+
   render() {
     return (
       <nav
@@ -10,8 +23,17 @@ class PrivateNavbar extends React.Component {
         role="navigation"
         aria-label="main navigation"
       >
-        <NavbarBrand hambergerButtonTarget="navbar" />
-        <Navbar id="navbar" />
+        <div className="navbar-brand">
+          <Logo logo={this.props.logo} />
+          <HambergerButton
+            onClick={this.toggleMenu}
+            isActive={this.state.isActive}
+          />
+        </div>
+        <Navbar
+          id="navbar"
+          isActive={this.state.isActive}
+        />
       </nav>
     )
   }

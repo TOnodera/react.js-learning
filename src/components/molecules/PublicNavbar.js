@@ -1,5 +1,5 @@
 import React from 'react'
-import NavbarBrand from './navbar/NavbarBrand'
+import { Logo } from '../atoms'
 
 class PublicNavbar extends React.Component {
   render() {
@@ -9,7 +9,9 @@ class PublicNavbar extends React.Component {
         role="navigation"
         aria-label="main navigation"
       >
-        <NavbarBrand />
+        <div className="navbar-brand">
+          <Logo logo={this.props.logo} />
+        </div>
       </nav>
     )
   }
