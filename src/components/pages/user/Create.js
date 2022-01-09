@@ -1,7 +1,15 @@
 import React from 'react'
 import BasicCard from '../../organisms/card/BasicCard'
+import BasicTextInput from '../../molecules/BasicTextInput'
+import { Label } from '../../atoms'
 
 class CreateUser extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      username: 'user name',
+    }
+  }
   header() {
     return 'ユーザー作成'
   }
@@ -9,7 +17,7 @@ class CreateUser extends React.Component {
     return (
       <>
         <div className="field">
-          <label className="label">Name</label>
+          <Label content="name" />
           <div className="control">
             <input
               className="input"
@@ -19,31 +27,19 @@ class CreateUser extends React.Component {
           </div>
         </div>
 
+        <BasicTextInput
+          label="username"
+          placeholder="input username"
+          leftIcon="fas fa-user"
+          rightIcon="fas fa-check"
+          onValueChange={(e) => {
+            this.setState(() => {
+              return { username: e.target.value }
+            })
+          }}
+        />
         <div className="field">
-          <label className="label">
-            Username
-          </label>
-          <div className="control has-icons-left has-icons-right">
-            <input
-              className="input is-success"
-              type="text"
-              placeholder="Text input"
-              value="bulma"
-            />
-            <span className="icon is-small is-left">
-              <i className="fas fa-user"></i>
-            </span>
-            <span className="icon is-small is-right">
-              <i className="fas fa-check"></i>
-            </span>
-          </div>
-          <p className="help is-success">
-            This username is available
-          </p>
-        </div>
-
-        <div className="field">
-          <label className="label">Email</label>
+          <Label content="e-mail" />
           <div className="control has-icons-left has-icons-right">
             <input
               className="input is-danger"
@@ -64,7 +60,7 @@ class CreateUser extends React.Component {
         </div>
 
         <div className="field">
-          <label className="label">Subject</label>
+          <Label content="subject" />
           <div className="control">
             <div className="select">
               <select>
@@ -76,7 +72,7 @@ class CreateUser extends React.Component {
         </div>
 
         <div className="field">
-          <label className="label">Message</label>
+          <Label content="message" />
           <div className="control">
             <textarea
               className="textarea"

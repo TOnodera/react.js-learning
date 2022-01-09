@@ -4,7 +4,7 @@ import './index.css'
 import 'bulma/css/bulma.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-
+//test
 ReactDOM.render(
   <React.StrictMode>
     <App />

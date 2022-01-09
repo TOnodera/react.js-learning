@@ -72,3 +72,11 @@ export function NavbarLoginButtons() {
     </div>
   )
 }
+
+export function Label(props) {
+  return (
+    <label className="label">
+      {props.content}
+    </label>
+  )
+}
