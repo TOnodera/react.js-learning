@@ -1,5 +1,6 @@
 import logo from '../../images/logo.svg'
 import { Link } from 'react-router-dom'
+
 export function Logo() {
   return (
     <a className="navbar-item" href="/">
@@ -47,7 +48,7 @@ export function NavbarItem() {
             ユーザー管理
           </Link>
           <Link
-            className="navbar-item"
+            className="navbar-item ml-3"
             to="/users/create"
           >
             ユーザー作成
