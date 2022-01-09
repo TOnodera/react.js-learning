@@ -46,6 +46,12 @@ export function NavbarItem() {
           >
             ユーザー管理
           </Link>
+          <Link
+            className="navbar-item"
+            to="/users/create"
+          >
+            ユーザー作成
+          </Link>
         </div>
       </div>
     </div>
