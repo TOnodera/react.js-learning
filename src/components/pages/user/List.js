@@ -3,7 +3,7 @@ import BasicCard from '../../organisms/card/BasicCard'
 
 class ListUsers extends React.Component {
   header() {
-    return 'ユーザー一覧'
+    return 'ユーザー管理'
   }
   content() {
     return (

@@ -41,7 +41,7 @@ export function NavbarItem() {
             className="navbar-item"
             to="/users"
           >
-            ユーザー一覧
+            ユーザー管理
           </Link>
         </div>
       </div>

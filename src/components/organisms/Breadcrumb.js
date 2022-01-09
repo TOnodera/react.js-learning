@@ -1,31 +1,38 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom'
 
-class Breadcumb extends React.Component {
-  render() {
-    return (
-      <nav
-        className="breadcrumb"
-        aria-label="breadcrumbs"
-      >
-        <ul>
-          <li>
-            <a href="#">Bulma</a>
-          </li>
-          <li>
-            <a href="#">Documentation</a>
-          </li>
-          <li>
-            <a href="#">Components</a>
-          </li>
-          <li className="is-active">
-            <a href="#" aria-current="page">
-              Breadcrumb
-            </a>
-          </li>
-        </ul>
-      </nav>
-    )
+const parsePath = (pathname) => {
+  if (pathname == '/') {
+    return []
   }
+  const splits = pathname.split('/')
+  const paths = splits.slice(1)
+  return paths
 }
 
-export default Breadcumb
+const Breadcrumb = () => {
+  const location = useLocation()
+  const paths = parsePath(location.pathname)
+  let memo = ''
+  return (
+    <nav
+      className="breadcrumb"
+      aria-label="breadcrumbs"
+    >
+      <ul>
+        <li>
+          <a href="/">top</a>
+        </li>
+        {paths.map((path) => (
+          <li key={path}>
+            <a href={(memo += '/' + path)}>
+              {path}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}
+
+export default Breadcrumb
