@@ -1,10 +1,10 @@
 import { Label } from '../atoms'
 import React from 'react'
 import ApplicationException from '../../exception/ApplicationException'
-import BasicTextInput from './BasicTextInput'
+import SimpleTextInput from './SimpleTextInput'
 
 function ErrorText(props) {
-  if (!props.isInputed) {
+  if (!props.value) {
     return ''
   }
   return props.isValid ? (
@@ -20,7 +20,7 @@ class GeneralTextInput extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isInputed: false,
+      value: null,
       isValid: false,
     }
   }
@@ -37,7 +37,7 @@ class GeneralTextInput extends React.Component {
     }
     this.setState(() => {
       return {
-        isInputed: e.target.value,
+        value: e.target.value,
         isValid: this.props.validateRegex.test(
           e.target.value
         ),
@@ -49,7 +49,7 @@ class GeneralTextInput extends React.Component {
   render() {
     return (
       <div className="field">
-        {this.state.isInputed ? (
+        {this.state.value ? (
           <>
             <Label content={this.props.label} />
             <div className="control has-icons-left has-icons-right">
@@ -86,13 +86,13 @@ class GeneralTextInput extends React.Component {
             </div>
           </>
         ) : (
-          <BasicTextInput
+          <SimpleTextInput
             label={this.props.label}
             leftIcon={this.props.leftIcon}
             onChange={(e) => {
               this.setState(() => {
                 return {
-                  isInputed: e.target.value,
+                  value: e.target.value,
                 }
               })
             }}
@@ -100,7 +100,7 @@ class GeneralTextInput extends React.Component {
         )}
         <ErrorText
           isValid={this.state.isValid}
-          isInputed={this.state.isInputed}
+          value={!!this.state.value}
         />
       </div>
     )

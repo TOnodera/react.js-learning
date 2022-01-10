@@ -1,28 +1,29 @@
-import React from 'react'
 import { Label } from '../atoms'
+import React from 'react'
 
-class BasicTextInput extends React.Component {
+class SimpleTextInput extends React.Component {
   constructor(props) {
     super(props)
   }
-
   render() {
     return (
-      <>
+      <div className="field">
         <Label content={this.props.label} />
         <div className="control has-icons-left has-icons-right">
           <input
-            className={[
-              'input',
-              this.state.isValid
-                ? 'is-success'
-                : 'is-danger',
-            ].join(' ')}
+            className="input"
             type="text"
             placeholder={this.props.placeHolder}
-            onChange={this._onChange}
+            onChange={this.props.onChange}
           />
-          <span className="icon is-small is-left">
+          <span
+            className={[
+              'icon',
+              'is-small',
+              'is-left',
+              this.leftIcon ? '' : 'is-hidden',
+            ].join(' ')}
+          >
             <i
               className={this.props.leftIcon}
             ></i>
@@ -32,17 +33,17 @@ class BasicTextInput extends React.Component {
               'icon',
               'is-small',
               'is-right',
-              this.state.isValid
-                ? 'has-text-primary'
-                : '',
+              this.rightIcon ? '' : 'is-hidden',
             ].join(' ')}
           >
-            <i className="fas fa-check"></i>
+            <i
+              className={this.props.rightIcon}
+            ></i>
           </span>
         </div>
-      </>
+      </div>
     )
   }
 }
 
-export default BasicTextInput
+export default SimpleTextInput
