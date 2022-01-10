@@ -32,7 +32,8 @@ class CreateUser extends React.Component {
           placeholder="input username"
           leftIcon="fas fa-user"
           rightIcon="fas fa-check"
-          onValueChange={(e) => {
+          validateRegex={/^[a-zA-Z]+$/}
+          onChange={(e) => {
             this.setState(() => {
               return { username: e.target.value }
             })
@@ -45,7 +46,6 @@ class CreateUser extends React.Component {
               className="input is-danger"
               type="email"
               placeholder="Email input"
-              value="hello@"
             />
             <span className="icon is-small is-left">
               <i className="fas fa-envelope"></i>
@@ -85,7 +85,7 @@ class CreateUser extends React.Component {
           <div className="control">
             <label className="checkbox">
               <input type="checkbox" />I agree to
-              the{' '}
+              the
               <a href="#">terms and conditions</a>
             </label>
           </div>
