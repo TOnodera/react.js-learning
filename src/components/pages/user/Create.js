@@ -33,6 +33,7 @@ class CreateUser extends React.Component {
           leftIcon="fas fa-user"
           rightIcon="fas fa-check"
           validateRegex={/^[a-zA-Z]+$/}
+          errorText="半角英字で入力してください。"
           onChange={(e) => {
             this.setState(() => {
               return { username: e.target.value }

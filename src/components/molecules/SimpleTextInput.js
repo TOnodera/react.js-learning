@@ -2,9 +2,6 @@ import { Label } from '../atoms'
 import React from 'react'
 
 class SimpleTextInput extends React.Component {
-  constructor(props) {
-    super(props)
-  }
   render() {
     return (
       <div className="field">
@@ -15,14 +12,21 @@ class SimpleTextInput extends React.Component {
             type="text"
             placeholder={this.props.placeHolder}
             onChange={this.props.onChange}
+            value={this.props.value}
           />
           <span
             className={[
               'icon',
               'is-small',
               'is-left',
-              this.leftIcon ? '' : 'is-hidden',
-            ].join(' ')}
+              this.props.leftIcon
+                ? ''
+                : 'is-hidden',
+            ]
+              .concat(
+                this.props.leftIconClass || []
+              )
+              .join(' ')}
           >
             <i
               className={this.props.leftIcon}
@@ -33,8 +37,14 @@ class SimpleTextInput extends React.Component {
               'icon',
               'is-small',
               'is-right',
-              this.rightIcon ? '' : 'is-hidden',
-            ].join(' ')}
+              this.props.rightIcon
+                ? ''
+                : 'is-hidden',
+            ]
+              .concat(
+                this.props.rightIconClass || []
+              )
+              .join(' ')}
           >
             <i
               className={this.props.rightIcon}
