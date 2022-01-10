@@ -21,7 +21,6 @@ class GeneralTextInput extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      value: '',
       isValid: false,
       isFirstView: true,
     }
@@ -64,7 +63,6 @@ class GeneralTextInput extends React.Component {
               }
             })
           }
-          value={this.state.value}
         />
         <ErrorText
           isValid={this.state.isValid}
