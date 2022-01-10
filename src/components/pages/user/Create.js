@@ -1,6 +1,6 @@
 import React from 'react'
 import BasicCard from '../../organisms/card/BasicCard'
-import BasicTextInput from '../../molecules/BasicTextInput'
+import GeneralTextInput from '../../molecules/GeneralTextInput'
 import { Label } from '../../atoms'
 
 class CreateUser extends React.Component {
@@ -27,7 +27,7 @@ class CreateUser extends React.Component {
           </div>
         </div>
 
-        <BasicTextInput
+        <GeneralTextInput
           label="username"
           placeholder="input username"
           leftIcon="fas fa-user"
