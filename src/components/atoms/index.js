@@ -14,10 +14,7 @@ export function HambergerButton(props) {
     <a
       onClick={props.onClick}
       role="button"
-      className={[
-        'navbar-burger',
-        props.isActive ? 'is-active' : '',
-      ].join(' ')}
+      className={['navbar-burger', props.isActive ? 'is-active' : ''].join(' ')}
       aria-label="menu"
       aria-expanded="false"
     >
@@ -36,21 +33,13 @@ export function NavbarItem() {
       </Link>
 
       <div className="navbar-item has-dropdown is-hoverable">
-        <span className="navbar-link">
-          メニュー
-        </span>
+        <span className="navbar-link">メニュー</span>
 
         <div className="navbar-dropdown">
-          <Link
-            className="navbar-item"
-            to="/users"
-          >
+          <Link className="navbar-item" to="/users">
             ユーザー管理
           </Link>
-          <Link
-            className="navbar-item ml-3"
-            to="/users/create"
-          >
+          <Link className="navbar-item ml-3" to="/users/create">
             ユーザー作成
           </Link>
         </div>
@@ -64,9 +53,7 @@ export function NavbarLoginButtons() {
     <div className="navbar-end">
       <div className="navbar-item">
         <div className="buttons">
-          <a className="button is-light">
-            Log Out
-          </a>
+          <a className="button is-light">Log Out</a>
         </div>
       </div>
     </div>
@@ -74,9 +61,5 @@ export function NavbarLoginButtons() {
 }
 
 export function Label(props) {
-  return (
-    <label className="label">
-      {props.content}
-    </label>
-  )
+  return <label className="label">{props.content}</label>
 }

@@ -18,22 +18,12 @@ class PrivateNavbar extends React.Component {
 
   render() {
     return (
-      <nav
-        className="navbar"
-        role="navigation"
-        aria-label="main navigation"
-      >
+      <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <Logo logo={this.props.logo} />
-          <HambergerButton
-            onClick={this.toggleMenu}
-            isActive={this.state.isActive}
-          />
+          <HambergerButton onClick={this.toggleMenu} isActive={this.state.isActive} />
         </div>
-        <Navbar
-          id="navbar"
-          isActive={this.state.isActive}
-        />
+        <Navbar id="navbar" isActive={this.state.isActive} />
       </nav>
     )
   }

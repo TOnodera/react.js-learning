@@ -15,10 +15,7 @@ class ListUsers extends React.Component {
   render() {
     return (
       <>
-        <BasicCard
-          header={this.header()}
-          content={this.content()}
-        />
+        <BasicCard header={this.header()} content={this.content()} />
       </>
     )
   }

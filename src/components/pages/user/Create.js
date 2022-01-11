@@ -28,8 +28,7 @@ class CreateUser extends React.Component {
           }}
           validators={[
             {
-              validation: (value) =>
-                /^.+$/.test(value),
+              validation: (value) => /^.+$/.test(value),
               message: '必須項目です。',
             },
           ]}
@@ -37,11 +36,7 @@ class CreateUser extends React.Component {
         <div className="field">
           <Label content="e-mail" />
           <div className="control has-icons-left has-icons-right">
-            <input
-              className="input is-danger"
-              type="email"
-              placeholder="Email input"
-            />
+            <input className="input is-danger" type="email" placeholder="Email input" />
             <span className="icon is-small is-left">
               <i className="fas fa-envelope"></i>
             </span>
@@ -49,9 +44,7 @@ class CreateUser extends React.Component {
               <i className="fas fa-exclamation-triangle"></i>
             </span>
           </div>
-          <p className="help is-danger">
-            This email is invalid
-          </p>
+          <p className="help is-danger">This email is invalid</p>
         </div>
 
         <div className="field">
@@ -69,18 +62,14 @@ class CreateUser extends React.Component {
         <div className="field">
           <Label content="message" />
           <div className="control">
-            <textarea
-              className="textarea"
-              placeholder="Textarea"
-            ></textarea>
+            <textarea className="textarea" placeholder="Textarea"></textarea>
           </div>
         </div>
 
         <div className="field">
           <div className="control">
             <label className="checkbox">
-              <input type="checkbox" />I agree to
-              the
+              <input type="checkbox" />I agree to the
               <a href="#">terms and conditions</a>
             </label>
           </div>
@@ -89,17 +78,11 @@ class CreateUser extends React.Component {
         <div className="field">
           <div className="control">
             <label className="radio">
-              <input
-                type="radio"
-                name="question"
-              />
+              <input type="radio" name="question" />
               Yes
             </label>
             <label className="radio">
-              <input
-                type="radio"
-                name="question"
-              />
+              <input type="radio" name="question" />
               No
             </label>
           </div>
@@ -107,14 +90,10 @@ class CreateUser extends React.Component {
 
         <div className="field is-grouped">
           <div className="control">
-            <button className="button is-link">
-              Submit
-            </button>
+            <button className="button is-link">Submit</button>
           </div>
           <div className="control">
-            <button className="button is-link is-light">
-              Cancel
-            </button>
+            <button className="button is-link is-light">Cancel</button>
           </div>
         </div>
       </>
@@ -123,10 +102,7 @@ class CreateUser extends React.Component {
   render() {
     return (
       <>
-        <BasicCard
-          header={this.header()}
-          content={this.content()}
-        />
+        <BasicCard header={this.header()} content={this.content()} />
       </>
     )
   }

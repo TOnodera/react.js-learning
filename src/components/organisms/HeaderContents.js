@@ -5,11 +5,7 @@ class HeaderContents extends React.Component {
   render() {
     return (
       <header className="header-contents">
-        {this.props.isAuthenticated ? (
-          <PrivateNavbar />
-        ) : (
-          <PublicNavbar />
-        )}
+        {this.props.isAuthenticated ? <PrivateNavbar /> : <PublicNavbar />}
       </header>
     )
   }

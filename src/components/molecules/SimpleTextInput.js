@@ -15,40 +15,18 @@ class SimpleTextInput extends React.Component {
             value={this.props.value}
           />
           <span
-            className={[
-              'icon',
-              'is-small',
-              'is-left',
-              this.props.leftIcon
-                ? ''
-                : 'is-hidden',
-            ]
-              .concat(
-                this.props.leftIconClass || []
-              )
+            className={['icon', 'is-small', 'is-left', this.props.leftIcon ? '' : 'is-hidden']
+              .concat(this.props.leftIconClass || [])
               .join(' ')}
           >
-            <i
-              className={this.props.leftIcon}
-            ></i>
+            <i className={this.props.leftIcon}></i>
           </span>
           <span
-            className={[
-              'icon',
-              'is-small',
-              'is-right',
-              this.props.rightIcon
-                ? ''
-                : 'is-hidden',
-            ]
-              .concat(
-                this.props.rightIconClass || []
-              )
+            className={['icon', 'is-small', 'is-right', this.props.rightIcon ? '' : 'is-hidden']
+              .concat(this.props.rightIconClass || [])
               .join(' ')}
           >
-            <i
-              className={this.props.rightIcon}
-            ></i>
+            <i className={this.props.rightIcon}></i>
           </span>
         </div>
       </div>

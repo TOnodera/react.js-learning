@@ -6,11 +6,7 @@ const isAuthenticated = true
 
 class App extends React.Component {
   render() {
-    return (
-      <BaseLayout
-        isAuthenticated={isAuthenticated}
-      />
-    )
+    return <BaseLayout isAuthenticated={isAuthenticated} />
   }
 }
 

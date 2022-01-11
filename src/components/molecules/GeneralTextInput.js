@@ -5,13 +5,7 @@ function ErrorText(props) {
   return props.isFirstView ? (
     ''
   ) : (
-    <p
-      className={[
-        'help',
-        'is-danger',
-        props.isValid ? 'is-hidden' : '',
-      ].join(' ')}
-    >
+    <p className={['help', 'is-danger', props.isValid ? 'is-hidden' : ''].join(' ')}>
       {props.errorText}
     </p>
   )
@@ -29,8 +23,7 @@ class GeneralTextInput extends React.Component {
 
   validate = (text) => {
     if (this.props.validators.length > 0) {
-      for (const validator of this.props
-        .validators) {
+      for (const validator of this.props.validators) {
         if (!validator.validation(text)) {
           this.setState(() => {
             return {
@@ -56,17 +49,9 @@ class GeneralTextInput extends React.Component {
         <SimpleTextInput
           label={this.props.label}
           rightIcon="fas fa-check"
-          rightIconClass={
-            this.state.isValid
-              ? 'has-text-primary'
-              : ''
-          }
+          rightIconClass={this.state.isValid ? 'has-text-primary' : ''}
           leftIcon={this.props.leftIcon}
-          leftIconClass={
-            this.state.isValid
-              ? 'has-text-primary'
-              : ''
-          }
+          leftIconClass={this.state.isValid ? 'has-text-primary' : ''}
           placeHolder={this.props.placeHolder}
           onChange={(e) => {
             this.validate(e.target.value)
