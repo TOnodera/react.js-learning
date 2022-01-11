@@ -3,13 +3,14 @@ import React from 'react'
 
 class SimpleTextInput extends React.Component {
   render() {
+    console.log(this.props.placeHolder)
     return (
       <div className="field">
         <Label content={this.props.label} />
         <div className="control has-icons-left has-icons-right">
           <input
             className="input"
-            type="text"
+            type={/^(text|email)$/.test(this.props.type) ? this.props.type : 'text'}
             placeholder={this.props.placeHolder}
             onChange={this.props.onChange}
             value={this.props.value}

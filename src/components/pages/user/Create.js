@@ -1,7 +1,6 @@
 import React from 'react'
 import BasicCard from '../../organisms/card/BasicCard'
 import GeneralTextInput from '../../molecules/GeneralTextInput'
-import { Label } from '../../atoms'
 
 class CreateUser extends React.Component {
   constructor() {
@@ -18,7 +17,7 @@ class CreateUser extends React.Component {
       <>
         <GeneralTextInput
           label="氏名"
-          placeholder="氏名を入力してください。"
+          placeHolder="氏名を入力してください。"
           leftIcon="fas fa-user"
           rightIcon="fas fa-check"
           onChange={(e) => {
@@ -33,60 +32,47 @@ class CreateUser extends React.Component {
             },
           ]}
         />
-        <div className="field">
-          <Label content="e-mail" />
-          <div className="control has-icons-left has-icons-right">
-            <input className="input is-danger" type="email" placeholder="Email input" />
-            <span className="icon is-small is-left">
-              <i className="fas fa-envelope"></i>
-            </span>
-            <span className="icon is-small is-right">
-              <i className="fas fa-exclamation-triangle"></i>
-            </span>
-          </div>
-          <p className="help is-danger">This email is invalid</p>
-        </div>
 
-        <div className="field">
-          <Label content="subject" />
-          <div className="control">
-            <div className="select">
-              <select>
-                <option>Select dropdown</option>
-                <option>With options</option>
-              </select>
-            </div>
-          </div>
-        </div>
+        <GeneralTextInput
+          label="氏名(カナ)"
+          placeHolder="氏名(カナ)を入力してください。"
+          leftIcon="fas fa-user"
+          rightIcon="fas fa-check"
+          onChange={(e) => {
+            this.setState(() => {
+              return { username: e.target.value }
+            })
+          }}
+          validators={[
+            {
+              validation: (value) => /^.+$/.test(value),
+              message: '必須項目です。',
+            },
+            {
+              validation: (value) => /^[ァ-ヴー\u{3000}]+$/u.test(value),
+              message: '全角カナ文字で入力してください。',
+            },
+          ]}
+        />
 
-        <div className="field">
-          <Label content="message" />
-          <div className="control">
-            <textarea className="textarea" placeholder="Textarea"></textarea>
-          </div>
-        </div>
-
-        <div className="field">
-          <div className="control">
-            <label className="checkbox">
-              <input type="checkbox" />I agree to the
-              <a href="#">terms and conditions</a>
-            </label>
-          </div>
-        </div>
-
-        <div className="field">
-          <div className="control">
-            <label className="radio">
-              <input type="radio" name="question" />
-              Yes
-            </label>
-            <label className="radio">
-              <input type="radio" name="question" />
-              No
-            </label>
-          </div>
-        </div>
+        <GeneralTextInput
+          label="E-mail"
+          placeHolder="メールアドレスを入力してください。"
+          leftIcon="fas fa-user"
+          rightIcon="fas fa-check"
+          onChange={(e) => {
+            this.setState(() => {
+              return { username: e.target.value }
+            })
+          }}
+          validators={[
+            {
+              validation: (value) => /^.+$/.test(value),
+              message: '必須項目です。',
+            },
+          ]}
+          type="email"
+        />
 
         <div className="field is-grouped">
           <div className="control">

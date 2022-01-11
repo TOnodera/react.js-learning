@@ -62,6 +62,7 @@ class GeneralTextInput extends React.Component {
               }
             })
           }}
+          type={this.props.type}
         />
         <ErrorText
           isValid={this.state.isValid}
