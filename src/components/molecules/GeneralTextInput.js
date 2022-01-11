@@ -22,16 +22,32 @@ class GeneralTextInput extends React.Component {
     super(props)
     this.state = {
       isValid: false,
+      errorText: '',
       isFirstView: true,
     }
   }
 
   validate = (text) => {
-    // バリデーションの正規表現がセットされていない場合は任意の文字列を受け付ける
-    if (!this.props.validateRegex) {
-      this.props.validateRegex = /^.*$/
+    if (this.props.validators.length > 0) {
+      for (const validator of this.props
+        .validators) {
+        if (!validator.validation(text)) {
+          this.setState(() => {
+            return {
+              isValid: false,
+              errorText: validator.message,
+            }
+          })
+          return
+        }
+      }
     }
-    return this.props.validateRegex.test(text)
+    this.setState(() => {
+      return {
+        isValid: true,
+        errorText: '',
+      }
+    })
   }
 
   render() {
@@ -51,22 +67,20 @@ class GeneralTextInput extends React.Component {
               ? 'has-text-primary'
               : ''
           }
-          onChange={(e) =>
+          placeHolder={this.props.placeHolder}
+          onChange={(e) => {
+            this.validate(e.target.value)
             this.setState(() => {
               this.props.onChange(e)
               return {
-                value: e.target.value,
-                isValid: this.validate(
-                  e.target.value
-                ),
                 isFirstView: false,
               }
             })
-          }
+          }}
         />
         <ErrorText
           isValid={this.state.isValid}
-          errorText={this.props.errorText}
+          errorText={this.state.errorText}
           isFirstView={this.state.isFirstView}
         />
       </>

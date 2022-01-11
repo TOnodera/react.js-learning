@@ -7,7 +7,7 @@ class CreateUser extends React.Component {
   constructor() {
     super()
     this.state = {
-      username: 'user name',
+      username: null,
     }
   }
   header() {
@@ -16,29 +16,23 @@ class CreateUser extends React.Component {
   content() {
     return (
       <>
-        <div className="field">
-          <Label content="name" />
-          <div className="control">
-            <input
-              className="input"
-              type="text"
-              placeholder="Text input"
-            />
-          </div>
-        </div>
-
         <GeneralTextInput
-          label="username"
-          placeholder="input username"
+          label="氏名"
+          placeholder="氏名を入力してください。"
           leftIcon="fas fa-user"
           rightIcon="fas fa-check"
-          validateRegex={/^[a-zA-Z]+$/}
-          errorText="半角英字で入力してください。"
           onChange={(e) => {
             this.setState(() => {
               return { username: e.target.value }
             })
           }}
+          validators={[
+            {
+              validation: (value) =>
+                /^.+$/.test(value),
+              message: '必須項目です。',
+            },
+          ]}
         />
         <div className="field">
           <Label content="e-mail" />
