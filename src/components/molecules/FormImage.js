@@ -4,9 +4,20 @@ import noImage from '../../images/noimage.png'
 class SimpleImage extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      src: props.src,
+    }
   }
-  fileHasChanged() {
-    console.log('ファイルが変更されました。')
+  fileHasChanged = (e) => {
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      this.setState(() => {
+        return {
+          src: e.target.result,
+        }
+      })
+    }
+    reader.readAsDataURL(e.target.files[0])
   }
   render() {
     return (
@@ -15,10 +26,10 @@ class SimpleImage extends React.Component {
           <div className="card">
             <div className="card-content">
               <div className="is-centered columns">
-                <div className={['column', this.props.src ? 'is-hidden' : ''].join(' ')}>
-                  <img src={this.props.src} />
+                <div className={['column', this.state.src ? '' : 'is-hidden'].join(' ')}>
+                  <img src={this.state.src} />
                 </div>
-                <div className={['column', this.props.src ? '' : 'is-hidden'].join(' ')}>
+                <div className={['column', this.state.src ? 'is-hidden' : ''].join(' ')}>
                   <img src={noImage} />
                 </div>
               </div>
