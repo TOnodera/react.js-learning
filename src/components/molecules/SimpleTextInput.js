@@ -3,7 +3,6 @@ import React from 'react'
 
 class SimpleTextInput extends React.Component {
   render() {
-    console.log(this.props.placeHolder)
     return (
       <div className="field">
         <Label content={this.props.label} />
