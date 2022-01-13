@@ -4,11 +4,29 @@ import GeneralTextInput from '../../molecules/GeneralTextInput'
 import FormImages from '../../molecules/FormImage/FormImages'
 
 class CreateUser extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      username: null,
+      username: {
+        value: null,
+        isValid: false,
+      },
+      usernameKana: {
+        value: null,
+        isValid: false,
+      },
+      email: {
+        value: null,
+        isValid: false,
+      },
+      password: {
+        value: null,
+        isValid: false,
+      },
     }
+  }
+  submit = () => {
+    console.log(this.state)
   }
   header() {
     return 'ユーザー作成'
@@ -23,7 +41,12 @@ class CreateUser extends React.Component {
           rightIcon="fas fa-check"
           onChange={(e) => {
             this.setState(() => {
-              return { username: e.target.value }
+              return {
+                username: {
+                  value: e.target.value,
+                  isValid: null,
+                },
+              }
             })
           }}
           validators={[
@@ -41,7 +64,7 @@ class CreateUser extends React.Component {
           rightIcon="fas fa-check"
           onChange={(e) => {
             this.setState(() => {
-              return { username: e.target.value }
+              return { usernameKana: e.target.value }
             })
           }}
           validators={[
@@ -63,7 +86,7 @@ class CreateUser extends React.Component {
           rightIcon="fas fa-check"
           onChange={(e) => {
             this.setState(() => {
-              return { username: e.target.value }
+              return { email: e.target.value }
             })
           }}
           validators={[
@@ -75,11 +98,32 @@ class CreateUser extends React.Component {
           type="email"
         />
 
+        <GeneralTextInput
+          label="password"
+          placeHolder="パスワードを入力してください。"
+          leftIcon="fas fa-user"
+          rightIcon="fas fa-check"
+          onChange={(e) => {
+            this.setState(() => {
+              return { password: e.target.value }
+            })
+          }}
+          validators={[
+            {
+              validation: (value) => /^.+$/.test(value),
+              message: '必須項目です。',
+            },
+          ]}
+          type="password"
+        />
+
         <FormImages />
 
         <div className="field is-grouped">
           <div className="control">
-            <button className="button is-link">送信</button>
+            <button className="button is-link" onClick={this.submit}>
+              送信
+            </button>
           </div>
           <div className="control">
             <button className="button is-link is-light">キャンセル</button>
