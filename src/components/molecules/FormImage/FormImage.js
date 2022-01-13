@@ -1,12 +1,22 @@
 import React from 'react'
-import noImage from '../../images/noimage.png'
+import noImage from '../../../images/noimage.png'
 
 class SimpleImage extends React.Component {
   constructor(props) {
     super(props)
+    this.fileRef = React.createRef()
     this.state = {
       src: props.src,
     }
+  }
+  onDeleteButtonClicked = (e) => {
+    this.fileRef.current.value = null
+    this.setState(() => {
+      return {
+        src: '',
+      }
+    })
+    this.props.onDeleteButtonClicked(e)
   }
   fileHasChanged = (e) => {
     const reader = new FileReader()
@@ -25,6 +35,10 @@ class SimpleImage extends React.Component {
         <div className={this.props.className}>
           <div className="card">
             <div className="card-content">
+              <button
+                className="delete is-pulled-right"
+                onClick={this.onDeleteButtonClicked}
+              ></button>
               <div className="is-centered columns">
                 <div className={['column', this.state.src ? '' : 'is-hidden'].join(' ')}>
                   <img src={this.state.src} />
@@ -38,6 +52,7 @@ class SimpleImage extends React.Component {
                   <input
                     className="file-input"
                     type="file"
+                    ref={this.fileRef}
                     name="resume"
                     onChange={this.fileHasChanged}
                   />

@@ -1,7 +1,7 @@
 import React from 'react'
 import BasicCard from '../../organisms/card/BasicCard'
 import GeneralTextInput from '../../molecules/GeneralTextInput'
-import FormImage from '../../molecules/FormImage'
+import FormImages from '../../molecules/FormImage/FormImages'
 
 class CreateUser extends React.Component {
   constructor() {
@@ -75,12 +75,8 @@ class CreateUser extends React.Component {
           type="email"
         />
 
-        <div className="columns is-flex-wrap-wrap">
-          <FormImage className="column is-one-quarter" />
-          <FormImage className="column is-one-quarter" />
-          <FormImage className="column is-one-quarter" />
-          <FormImage className="column is-one-quarter" />
-        </div>
+        <FormImages />
+
         <div className="field is-grouped">
           <div className="control">
             <button className="button is-link">送信</button>
