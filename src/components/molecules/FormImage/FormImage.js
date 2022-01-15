@@ -32,7 +32,7 @@ class SimpleImage extends React.Component {
   render() {
     return (
       <>
-        <div className={this.props.className}>
+        <div className={['column', this.props.className].join(' ')}>
           <div className="card">
             <div className="card-content">
               <button

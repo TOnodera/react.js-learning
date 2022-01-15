@@ -4,6 +4,7 @@ import GeneralTextInput from '../../molecules/GeneralTextInput'
 import FormImages from '../../molecules/FormImage/FormImages'
 import http from '../../../utilities/http'
 import Toast from '../../../utilities/toast'
+import FormImage from '../../molecules/FormImage/FormImage'
 
 class CreateUser extends React.Component {
   constructor(props) {
@@ -161,11 +162,18 @@ class CreateUser extends React.Component {
               validation: (value) => /^.+$/.test(value),
               message: '必須項目です。',
             },
+            {
+              validation: (value) => /^[\w-~]{8,32}$/.test(value),
+              message: '半角英数字記号を使用して8文字以上３２文字以内で入力してください。',
+            },
           ]}
           type="password"
         />
 
-        <FormImages />
+        <FormImages>
+          <FormImage className="is-one-quarter" />
+          <FormImage className="is-one-quarter" />
+        </FormImages>
 
         <div className="field is-grouped">
           <div className="control">
