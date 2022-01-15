@@ -2,6 +2,7 @@ import React from 'react'
 import BasicCard from '../../organisms/card/BasicCard'
 import GeneralTextInput from '../../molecules/GeneralTextInput'
 import FormImages from '../../molecules/FormImage/FormImages'
+import http from '../../../utilities/http'
 
 class CreateUser extends React.Component {
   constructor(props) {
@@ -25,14 +26,22 @@ class CreateUser extends React.Component {
       },
     }
   }
-  submit = () => {
+  submit = async () => {
     if (
       this.state.username.isValid &&
       this.state.usernameKana.isValid &&
       this.state.email.isValid &&
       this.state.password.isValid
     ) {
-      console.log('isValid')
+      // ユーザー新規作成
+      const response = await http.post('/users/create', {
+        name: this.state.username.value,
+        email: this.state.email.value,
+        password: this.state.password.value,
+      })
+      // レスポンスからID取得
+
+      console.log('レスポンス: ', response)
     } else {
       console.log(
         this.state.username.isValid,
