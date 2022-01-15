@@ -3,7 +3,7 @@ import BasicCard from '../../organisms/card/BasicCard'
 import GeneralTextInput from '../../molecules/GeneralTextInput'
 import FormImages from '../../molecules/FormImage/FormImages'
 import http from '../../../utilities/http'
-import { toast } from 'bulma-toast'
+import Toast from '../../../utilities/toast'
 
 class CreateUser extends React.Component {
   constructor(props) {
@@ -48,18 +48,10 @@ class CreateUser extends React.Component {
           email: this.state.textValues.email.value,
           password: this.state.textValues.password.value,
         })
-        toast({
-          message: 'ユーザーが作成されました。',
-          type: 'is-success',
-        })
+        Toast.success('ユーザーを新規作成しました。')
       } catch (err) {
         // 失敗した場合はトーストでエラー表示
-        console.log(err, err.response.data || err.message)
-        toast({
-          message: err.response.data.message || err.message,
-          type: 'is-danger',
-          duration: 10000,
-        })
+        Toast.danger(err.response.data.message || err.message)
       }
     } else {
       console.log('inValid')
