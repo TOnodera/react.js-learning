@@ -3,6 +3,7 @@ import BasicCard from '../../organisms/card/BasicCard'
 import GeneralTextInput from '../../molecules/GeneralTextInput'
 import FormImages from '../../molecules/FormImage/FormImages'
 import http from '../../../utilities/http'
+import { toast } from 'bulma-toast'
 
 class CreateUser extends React.Component {
   constructor(props) {
@@ -41,14 +42,24 @@ class CreateUser extends React.Component {
       this.state.textValues.password.isValid
     ) {
       // ユーザー新規作成
-      const response = await http.post('/users/create', {
-        name: this.state.textValues.username.value,
-        email: this.state.textValues.email.value,
-        password: this.state.textValues.password.value,
-      })
-      // レスポンスチェック
-      if (response.status == 201) {
-      } else {
+      try {
+        await http.post('/users/create', {
+          name: this.state.textValues.username.value,
+          email: this.state.textValues.email.value,
+          password: this.state.textValues.password.value,
+        })
+        toast({
+          message: 'ユーザーが作成されました。',
+          type: 'is-success',
+        })
+      } catch (err) {
+        // 失敗した場合はトーストでエラー表示
+        console.log(err, err.response.data || err.message)
+        toast({
+          message: err.response.data.message || err.message,
+          type: 'is-danger',
+          duration: 10000,
+        })
       }
     } else {
       console.log('inValid')
