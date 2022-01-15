@@ -8,48 +8,51 @@ class CreateUser extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      username: {
-        value: null,
-        isValid: false,
-      },
-      usernameKana: {
-        value: null,
-        isValid: false,
-      },
-      email: {
-        value: null,
-        isValid: false,
-      },
-      password: {
-        value: null,
-        isValid: false,
+      textValues: {
+        username: {
+          value: null,
+          isValid: false,
+        },
+        usernameKana: {
+          value: null,
+          isValid: false,
+        },
+        email: {
+          value: null,
+          isValid: false,
+        },
+        password: {
+          value: null,
+          isValid: false,
+        },
       },
     }
   }
+  changeTextValuesState = (key, value) => {
+    const textValues = this.state.textValues
+    textValues[key] = value
+    return textValues
+  }
   submit = async () => {
     if (
-      this.state.username.isValid &&
-      this.state.usernameKana.isValid &&
-      this.state.email.isValid &&
-      this.state.password.isValid
+      this.state.textValues.username.isValid &&
+      this.state.textValues.usernameKana.isValid &&
+      this.state.textValues.email.isValid &&
+      this.state.textValues.password.isValid
     ) {
       // ユーザー新規作成
       const response = await http.post('/users/create', {
-        name: this.state.username.value,
-        email: this.state.email.value,
-        password: this.state.password.value,
+        name: this.state.textValues.username.value,
+        email: this.state.textValues.email.value,
+        password: this.state.textValues.password.value,
       })
-      // レスポンスからID取得
-
-      console.log('レスポンス: ', response)
+      // レスポンスチェック
+      if (response.status == 201) {
+      } else {
+      }
     } else {
-      console.log(
-        this.state.username.isValid,
-        this.state.usernameKana.isValid,
-        this.state.email.isValid,
-        this.state.password.isValid
-      )
       console.log('inValid')
+      console.log(this.state.textValues)
     }
   }
   header() {
@@ -64,13 +67,12 @@ class CreateUser extends React.Component {
           leftIcon="fas fa-user"
           rightIcon="fas fa-check"
           onChange={(e, isValid) => {
+            const textValue = this.changeTextValuesState('username', {
+              value: e.target.value,
+              isValid: isValid,
+            })
             this.setState(() => {
-              return {
-                username: {
-                  value: e.target.value,
-                  isValid: isValid,
-                },
-              }
+              return textValue
             })
           }}
           validators={[
@@ -87,13 +89,12 @@ class CreateUser extends React.Component {
           leftIcon="fas fa-user"
           rightIcon="fas fa-check"
           onChange={(e, isValid) => {
+            const textValue = this.changeTextValuesState('usernameKana', {
+              value: e.target.value,
+              isValid: isValid,
+            })
             this.setState(() => {
-              return {
-                usernameKana: {
-                  value: e.target.value,
-                  isValid: isValid,
-                },
-              }
+              return textValue
             })
           }}
           validators={[
@@ -114,13 +115,12 @@ class CreateUser extends React.Component {
           leftIcon="fas fa-user"
           rightIcon="fas fa-check"
           onChange={(e, isValid) => {
+            const textValue = this.changeTextValuesState('email', {
+              value: e.target.value,
+              isValid: isValid,
+            })
             this.setState(() => {
-              return {
-                email: {
-                  value: e.target.value,
-                  isValid: isValid,
-                },
-              }
+              return textValue
             })
           }}
           validators={[
@@ -138,13 +138,12 @@ class CreateUser extends React.Component {
           leftIcon="fas fa-user"
           rightIcon="fas fa-check"
           onChange={(e, isValid) => {
+            const textValue = this.changeTextValuesState('password', {
+              value: e.target.value,
+              isValid: isValid,
+            })
             this.setState(() => {
-              return {
-                password: {
-                  value: e.target.value,
-                  isValid: isValid,
-                },
-              }
+              return textValue
             })
           }}
           validators={[
