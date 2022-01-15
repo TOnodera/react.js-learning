@@ -25,6 +25,7 @@ class GeneralTextInput extends React.Component {
     if (this.props.validators.length > 0) {
       for (const validator of this.props.validators) {
         if (!validator.validation(text)) {
+          console.log('invalid: ', text)
           this.setState(() => {
             return {
               isValid: false,
@@ -55,12 +56,14 @@ class GeneralTextInput extends React.Component {
           placeHolder={this.props.placeHolder}
           onChange={(e) => {
             this.validate(e.target.value)
-            this.setState(() => {
-              this.props.onChange(e)
-              return {
-                isFirstView: false,
-              }
-            })
+            this.setState(
+              () => {
+                return {
+                  isFirstView: false,
+                }
+              },
+              () => this.props.onChange(e, this.state.isValid)
+            )
           }}
           type={this.props.type}
         />

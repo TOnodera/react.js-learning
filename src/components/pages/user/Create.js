@@ -26,7 +26,22 @@ class CreateUser extends React.Component {
     }
   }
   submit = () => {
-    console.log(this.state)
+    if (
+      this.state.username.isValid &&
+      this.state.usernameKana.isValid &&
+      this.state.email.isValid &&
+      this.state.password.isValid
+    ) {
+      console.log('isValid')
+    } else {
+      console.log(
+        this.state.username.isValid,
+        this.state.usernameKana.isValid,
+        this.state.email.isValid,
+        this.state.password.isValid
+      )
+      console.log('inValid')
+    }
   }
   header() {
     return 'ユーザー作成'
@@ -39,12 +54,12 @@ class CreateUser extends React.Component {
           placeHolder="氏名を入力してください。"
           leftIcon="fas fa-user"
           rightIcon="fas fa-check"
-          onChange={(e) => {
+          onChange={(e, isValid) => {
             this.setState(() => {
               return {
                 username: {
                   value: e.target.value,
-                  isValid: null,
+                  isValid: isValid,
                 },
               }
             })
@@ -62,9 +77,14 @@ class CreateUser extends React.Component {
           placeHolder="氏名(カナ)を入力してください。"
           leftIcon="fas fa-user"
           rightIcon="fas fa-check"
-          onChange={(e) => {
+          onChange={(e, isValid) => {
             this.setState(() => {
-              return { usernameKana: e.target.value }
+              return {
+                usernameKana: {
+                  value: e.target.value,
+                  isValid: isValid,
+                },
+              }
             })
           }}
           validators={[
@@ -84,9 +104,14 @@ class CreateUser extends React.Component {
           placeHolder="メールアドレスを入力してください。"
           leftIcon="fas fa-user"
           rightIcon="fas fa-check"
-          onChange={(e) => {
+          onChange={(e, isValid) => {
             this.setState(() => {
-              return { email: e.target.value }
+              return {
+                email: {
+                  value: e.target.value,
+                  isValid: isValid,
+                },
+              }
             })
           }}
           validators={[
@@ -103,9 +128,14 @@ class CreateUser extends React.Component {
           placeHolder="パスワードを入力してください。"
           leftIcon="fas fa-user"
           rightIcon="fas fa-check"
-          onChange={(e) => {
+          onChange={(e, isValid) => {
             this.setState(() => {
-              return { password: e.target.value }
+              return {
+                password: {
+                  value: e.target.value,
+                  isValid: isValid,
+                },
+              }
             })
           }}
           validators={[
