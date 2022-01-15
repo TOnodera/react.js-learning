@@ -9,7 +9,7 @@ class SimpleTextInput extends React.Component {
         <div className="control has-icons-left has-icons-right">
           <input
             className="input"
-            type={/^(text|email)$/.test(this.props.type) ? this.props.type : 'text'}
+            type={/^(text|email|password)$/.test(this.props.type) ? this.props.type : 'text'}
             placeholder={this.props.placeHolder}
             onChange={this.props.onChange}
             value={this.props.value}

@@ -43,19 +43,22 @@ class CreateUser extends React.Component {
     ) {
       // ユーザー新規作成
       try {
+        // ユーザーデータ作成
         await http.post('/users/create', {
           name: this.state.textValues.username.value,
           email: this.state.textValues.email.value,
           password: this.state.textValues.password.value,
         })
+
+        // トースト表示
         Toast.success('ユーザーを新規作成しました。')
       } catch (err) {
         // 失敗した場合はトーストでエラー表示
         Toast.danger(err.response.data.message || err.message)
       }
     } else {
-      console.log('inValid')
-      console.log(this.state.textValues)
+      // バリデーションチェック通らない場合はトースト表示
+      Toast.danger('入力内容が間違っています。')
     }
   }
   header() {
@@ -130,6 +133,10 @@ class CreateUser extends React.Component {
             {
               validation: (value) => /^.+$/.test(value),
               message: '必須項目です。',
+            },
+            {
+              validation: (value) => /^[\w+_.-]+[^.]@[\w-]+\.[\w]+$/.test(value),
+              message: 'メールアドレスの形式が間違っています。',
             },
           ]}
           type="email"
