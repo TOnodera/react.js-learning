@@ -123,7 +123,7 @@ class CreateUser extends React.Component {
         <GeneralTextInput
           label="E-mail"
           placeHolder="メールアドレスを入力してください。"
-          leftIcon="fas fa-user"
+          leftIcon="fas fa-envelope-square"
           rightIcon="fas fa-check"
           onChange={(e, isValid) => {
             const textValue = this.changeTextValuesState('email', {
@@ -146,7 +146,7 @@ class CreateUser extends React.Component {
         <GeneralTextInput
           label="password"
           placeHolder="パスワードを入力してください。"
-          leftIcon="fas fa-user"
+          leftIcon="fas fa-key"
           rightIcon="fas fa-check"
           onChange={(e, isValid) => {
             const textValue = this.changeTextValuesState('password', {
