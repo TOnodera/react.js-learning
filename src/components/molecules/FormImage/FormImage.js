@@ -1,7 +1,7 @@
 import React from 'react'
 import noImage from '../../../images/noimage.png'
 
-class SimpleImage extends React.Component {
+class FormImage extends React.Component {
   constructor(props) {
     super(props)
     this.fileRef = React.createRef()
@@ -16,7 +16,7 @@ class SimpleImage extends React.Component {
         src: '',
       }
     })
-    this.props.onDeleteButtonClicked(e)
+    this.props.onDeleteButtonClicked(e, this.props.index)
   }
   fileHasChanged = (e) => {
     const reader = new FileReader()
@@ -72,4 +72,4 @@ class SimpleImage extends React.Component {
   }
 }
 
-export default SimpleImage
+export default FormImage

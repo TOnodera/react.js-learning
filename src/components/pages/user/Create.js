@@ -4,7 +4,6 @@ import GeneralTextInput from '../../molecules/GeneralTextInput'
 import FormImages from '../../molecules/FormImage/FormImages'
 import http from '../../../utilities/http'
 import Toast from '../../../utilities/toast'
-import FormImage from '../../molecules/FormImage/FormImage'
 
 class CreateUser extends React.Component {
   constructor(props) {
@@ -170,10 +169,7 @@ class CreateUser extends React.Component {
           type="password"
         />
 
-        <FormImages>
-          <FormImage className="is-one-quarter" />
-          <FormImage className="is-one-quarter" />
-        </FormImages>
+        <FormImages />
 
         <div className="field is-grouped">
           <div className="control">
