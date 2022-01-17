@@ -19,15 +19,24 @@ class FormImage extends React.Component {
     this.props.onDeleteButtonClicked(e, this.props.index)
   }
   fileHasChanged = (e) => {
-    const reader = new FileReader()
-    reader.onload = (e) => {
+    if (e.target.files[0]) {
+      const reader = new FileReader()
+      reader.onload = (e) => {
+        this.setState(() => {
+          return {
+            src: e.target.result,
+          }
+        })
+      }
+      reader.readAsDataURL(e.target.files[0])
+    } else {
       this.setState(() => {
         return {
-          src: e.target.result,
+          src: '',
         }
       })
     }
-    reader.readAsDataURL(e.target.files[0])
+    this.props.onChange(e.target.files[0])
   }
   render() {
     return (

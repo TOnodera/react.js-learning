@@ -27,6 +27,7 @@ class CreateUser extends React.Component {
           isValid: false,
         },
       },
+      files: [],
     }
   }
   changeTextValuesState = (key, value) => {
@@ -35,6 +36,7 @@ class CreateUser extends React.Component {
     return textValues
   }
   submit = async () => {
+    console.log(this.state.files)
     if (
       this.state.textValues.username.isValid &&
       this.state.textValues.usernameKana.isValid &&
@@ -49,7 +51,6 @@ class CreateUser extends React.Component {
           email: this.state.textValues.email.value,
           password: this.state.textValues.password.value,
         })
-
         // トースト表示
         Toast.success('ユーザーを新規作成しました。')
       } catch (err) {
@@ -169,7 +170,18 @@ class CreateUser extends React.Component {
           type="password"
         />
 
-        <FormImages />
+        <FormImages
+          onChange={(files) => {
+            this.setState(() => {
+              return { files }
+            })
+          }}
+          onDeleteButtonClicked={(files) => {
+            this.setState(() => {
+              return { files }
+            })
+          }}
+        />
 
         <div className="field is-grouped">
           <div className="control">
