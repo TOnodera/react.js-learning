@@ -36,7 +36,6 @@ class CreateUser extends React.Component {
     return textValues
   }
   submit = async () => {
-    console.log(this.state.files)
     if (
       this.state.textValues.username.isValid &&
       this.state.textValues.usernameKana.isValid &&
@@ -46,11 +45,22 @@ class CreateUser extends React.Component {
       // ユーザー新規作成
       try {
         // ユーザーデータ作成
-        await http.post('/users/create', {
+        const { data } = await http.post('/users/create', {
           name: this.state.textValues.username.value,
           email: this.state.textValues.email.value,
           password: this.state.textValues.password.value,
         })
+        // 画像が選択されている場合は画像登録
+        if (this.state.files.length > 0) {
+          const id = data.id
+          for (const { index, file } of this.state.files) {
+            const data = new FormData()
+            data.append('file', file)
+            await http.post(`/users/${id}/${index}/upload-file`, data, {
+              'Content-Type': 'multipart/form-data',
+            })
+          }
+        }
         // トースト表示
         Toast.success('ユーザーを新規作成しました。')
       } catch (err) {

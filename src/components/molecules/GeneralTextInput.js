@@ -25,7 +25,6 @@ class GeneralTextInput extends React.Component {
     if (this.props.validators.length > 0) {
       for (const validator of this.props.validators) {
         if (!validator.validation(text)) {
-          console.log('invalid: ', text)
           this.setState(() => {
             return {
               isValid: false,

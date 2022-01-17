@@ -4,7 +4,7 @@ class FormImages extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      fileImageComponents: [this.createFormImage(0)],
+      fileImageComponents: [this.createFormImage(1)],
       files: [],
     }
   }
@@ -21,6 +21,7 @@ class FormImages extends React.Component {
             this.setState(
               () => {
                 if (file) {
+                  // ファイルが選択された場合の処理
                   const files = this.state.files.slice()
                   files.push({
                     index,
@@ -28,6 +29,7 @@ class FormImages extends React.Component {
                   })
                   return { files }
                 } else {
+                  // キャンセルが押された場合の処理
                   const files = this.state.files.filter((value) => value.index != index)
                   return { files }
                 }
