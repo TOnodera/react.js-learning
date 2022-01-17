@@ -5,6 +5,7 @@ class FormImages extends React.Component {
     super(props)
     this.state = {
       fileImageComponents: [this.createFormImage(0)],
+      files: [],
     }
   }
   createFormImage = (index) => {
@@ -16,6 +17,24 @@ class FormImages extends React.Component {
           index={index}
           onDeleteButtonClicked={this.onDeleteButtonClicked}
           className="column is-one-quarter"
+          onChange={(file) => {
+            this.setState(
+              () => {
+                if (file) {
+                  const files = this.state.files.slice()
+                  files.push({
+                    index,
+                    file,
+                  })
+                  return { files }
+                } else {
+                  const files = this.state.files.filter((value) => value.index != index)
+                  return { files }
+                }
+              },
+              () => this.props.onChange(this.state.files)
+            )
+          }}
         />
       ),
     }
@@ -28,15 +47,21 @@ class FormImages extends React.Component {
     })
   }
   onDeleteButtonClicked = (e, index) => {
-    this.setState((state) => {
-      const fileImageComponents = state.fileImageComponents.filter((value) => {
-        return value.index != index
-      })
-
-      return {
-        fileImageComponents: fileImageComponents,
-      }
-    })
+    this.setState(
+      (state) => {
+        const fileImageComponents = state.fileImageComponents.filter((value) => {
+          return value.index != index
+        })
+        const files = state.files.filter((value) => {
+          return value.index != index
+        })
+        return {
+          fileImageComponents,
+          files,
+        }
+      },
+      () => this.props.onDeleteButtonClicked(this.state.files)
+    )
   }
   showComponents() {
     return this.state.fileImageComponents.map((value) => {
