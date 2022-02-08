@@ -1,10 +1,20 @@
 import React from 'react'
+import http from '../../../utilities/http'
 import BasicCard from '../../organisms/card/BasicCard'
+import { convertStorageUrl } from '../../../utilities/functions'
 
 class ListUsers extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      usersList: [],
+    }
+  }
+
   header() {
     return 'ユーザー管理'
   }
+
   content() {
     return (
       <>
@@ -20,30 +30,43 @@ class ListUsers extends React.Component {
             </tr>
           </thead>
           <tbody>
-            <tr className="users-table-tr">
-              <td className="has-text-centered">19</td>
-              <td className="has-text-centered">
-                <figure className="image is-64x64 is-inline-block">
-                  <img
-                    className="is-rounded"
-                    src="https://bulma.io/images/placeholders/128x128.png"
-                  />
-                </figure>
-              </td>
-              <td className="has-text-centered">test@test.com</td>
-              <td className="has-text-centered">2021年12月18日 12:30:00</td>
-              <td className="has-text-centered">2021年12月15日 12:30:00</td>
-              <td className="has-text-centered">
-                <div className="buttons is-centered">
-                  <button className="button is-link">詳細</button>
-                </div>
-              </td>
-            </tr>
+            {this.state.usersList.map((user, index) => (
+              <tr key={index} className="users-table-tr">
+                <td className="has-text-centered">{user.id}</td>
+                <td className="has-text-centered">
+                  <figure className="image is-64x64 is-inline-block">
+                    <img
+                      className="is-rounded"
+                      src={convertStorageUrl(
+                        user.paths[0]['storage_name'],
+                        user.paths[0]['file_name']
+                      )}
+                    />
+                  </figure>
+                </td>
+                <td className="has-text-centered">test@test.com</td>
+                <td className="has-text-centered">2021年12月18日 12:30:00</td>
+                <td className="has-text-centered">2021年12月15日 12:30:00</td>
+                <td className="has-text-centered">
+                  <div className="buttons is-centered">
+                    <button className="button is-link">詳細</button>
+                  </div>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </>
     )
   }
+
+  async componentDidMount() {
+    const { data } = await http.get('users/')
+    this.setState(() => {
+      return { usersList: data }
+    })
+  }
+
   render() {
     return (
       <>
