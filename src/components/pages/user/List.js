@@ -2,6 +2,7 @@ import React from 'react'
 import http from '../../../utilities/http'
 import BasicCard from '../../organisms/card/BasicCard'
 import { convertStorageUrl } from '../../../utilities/functions'
+import { Link } from 'react-router-dom'
 
 class ListUsers extends React.Component {
   constructor(props) {
@@ -49,7 +50,9 @@ class ListUsers extends React.Component {
                 <td className="has-text-centered">2021年12月15日 12:30:00</td>
                 <td className="has-text-centered">
                   <div className="buttons is-centered">
-                    <button className="button is-link">詳細</button>
+                    <Link to={'/users/' + user.id}>
+                      <button className="button is-link">詳細</button>
+                    </Link>
                   </div>
                 </td>
               </tr>

@@ -4,6 +4,7 @@ import Breadcumb from '../organisms/Breadcrumb'
 import Dashboard from '../pages/Dashboard'
 import ListUsers from '../pages/user/List'
 import CreateUser from '../pages/user/Create'
+import UpdateUser from '../pages/user/Update'
 import FooterContents from '../organisms/FooterContents'
 import { BrowserRouter, Route } from 'react-router-dom'
 
@@ -20,6 +21,7 @@ class BaseLayout extends React.Component {
                 <Route exact path="/" component={Dashboard} />
                 <Route exact path="/users" component={ListUsers} />
                 <Route exact path="/users/create" component={CreateUser} />
+                <Route exact path="/users/:id" component={UpdateUser} />
               </>
             </div>
           </main>

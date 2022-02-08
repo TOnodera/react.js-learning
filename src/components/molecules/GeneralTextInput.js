@@ -47,6 +47,7 @@ class GeneralTextInput extends React.Component {
     return (
       <>
         <SimpleTextInput
+          value={this.props.value}
           label={this.props.label}
           rightIcon="fas fa-check"
           rightIconClass={this.state.isValid ? 'has-text-primary' : ''}
